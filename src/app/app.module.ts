@@ -15,7 +15,6 @@ import { environment } from "src/environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CalendarService } from './service/calendar-service.service';
 import { Calendar } from '@ionic-native/calendar/ngx';
 
 @NgModule({
