@@ -24,7 +24,6 @@ export class ApplicationService {
         (data) => {
           this.uid = data.uid;
         });
-
   }
 
   getPath() {
@@ -48,11 +47,13 @@ export class ApplicationService {
       .valueChanges()
   }
 
-  // getApplicationByStatus(status: any) {
-  //   return this.firestore
-  //     .collection(this.application, ref => ref.where('status', '==', status))
-  //     .valueChanges()
-  // }
+  getApplicationByStatus(status: any) {
+    return this.firestore
+      .collection(this.users)
+      .doc(this.uid)
+      .collection(this.application, ref => ref.where('status', '==', status))
+      .snapshotChanges()
+  }
 
   addApplication(data: any) {
     this.getPath()

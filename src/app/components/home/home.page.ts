@@ -10,7 +10,8 @@ import { AuthService } from 'src/app/service/auth-service.service';
 export class HomePage {
 
   applications: any;
-  // status: string;
+  status: string;
+  visibility: boolean;
 
   constructor(
     private applicationService: ApplicationService,
@@ -18,7 +19,6 @@ export class HomePage {
   ) { }
 
   ngOnInit() {
-
   }
 
   ionViewWillEnter() {
@@ -33,6 +33,7 @@ export class HomePage {
           this.applications = data;
         }
       )
+    this.visibility = true;
   }
 
   deleteApplication(id: any) {
@@ -43,14 +44,14 @@ export class HomePage {
     this.authService.logout();
   }
 
-  // getApplicationByStatus() {
-  //   this.applicationService
-  //     .getApplicationById(status)
-  //     .subscribe(
-  //       (data) => {
-  //         this.applications = data;
-  //       }
-  //     )
-  //   console.log(this.applications);
-  // }
+  getByStatus(selectValue: any) {
+    this.applicationService
+      .getApplicationByStatus(selectValue)
+      .subscribe(
+        (data) => {
+          this.applications = data;
+        }
+      )
+    this.visibility = true;
+  }
 }
