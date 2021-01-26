@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NavController } from '@ionic/angular';
 import { AuthService } from './auth-service.service';
-import { Calendar } from '@ionic-native/calendar/ngx';
 
 @Injectable({
   providedIn: 'root'

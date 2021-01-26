@@ -42,7 +42,7 @@ export class InterviewPage implements OnInit {
   }
 
   addEvent() {
-    this.calendar.createCalendar("Candidature");
+    this.calendar.createCalendar("Entretien");
     this.calendar.createEvent(
       `${this.interview.recruiter} interview`,
       "",

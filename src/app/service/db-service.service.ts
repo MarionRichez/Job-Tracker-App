@@ -52,6 +52,5 @@ export class DbService {
       CONSTRAINT FK_Documents_Application FOREIGN KEY (DocumentsId) REFERENCES Documents(DocumentsId)
       )`);
     // this.database.executeSql(``)
-
   }
 }
