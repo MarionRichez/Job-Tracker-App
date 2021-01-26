@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit-interview</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="interviewForm" (ngSubmit)="submit()">
+    <ion-item lines="full">
+      <ion-label>Recruiter</ion-label>
+      <ion-input
+        class="ion-text-right"
+        type="text"
+        formControlName="recruiter"
+        required
+        value="{{interview.recruiter}}"
+      ></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-item lines="full">
+        <ion-label>Platform</ion-label>
+        <ion-select
+          okText="Ok"
+          cancelText="Cancel"
+          formControlName="platform"
+          value="{{interview.platform}}"
+        >
+          <ion-select-option value="Phone">Phone</ion-select-option>
+          <ion-select-option value="Vidéo">Vidéo</ion-select-option>
+          <ion-select-option value="Face-to-face">
+            Face-to-face
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-item lines="full">
+      <ion-label>Date</ion-label>
+      <ion-datetime
+        class="ion-text-right"
+        displayFormat="DD/MM/YYYY"
+        formControlName="date"
+        value="{{interview.date}}"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-textarea
+        autoGrow="true"
+        formControlName="notes"
+        value="{{interview.notes}}"
+      ></ion-textarea>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="interviewForm.invalid"
+      >Submit</ion-button
+    >
+  </form>
+</ion-content>

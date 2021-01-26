@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Application</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="['/home']"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="applicationForm" (ngSubmit)="addApplication()">
+    <ion-list>
+      <ion-item lines="full">
+        <ion-label>Status</ion-label>
+        <ion-select okText="Ok" cancelText="Cancel" formControlName="status">
+          <ion-select-option value="Whishlist">Whishlist</ion-select-option>
+          <ion-select-option value="Pending">Pending</ion-select-option>
+          <ion-select-option value="Offer">Offer</ion-select-option>
+          <ion-select-option value="Denied">Denied</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-item lines="full">
+      <ion-label>Company</ion-label>
+      <ion-input
+        class="ion-text-right"
+        type="text"
+        formControlName="company"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Position</ion-label>
+      <ion-input
+        class="ion-text-right"
+        type="text"
+        formControlName="position"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Url</ion-label>
+      <ion-input
+        type="url"
+        class="ion-text-right"
+        formControlName="url"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Date</ion-label>
+      <ion-datetime
+        class="ion-text-right"
+        displayFormat="DD/MM/YYYY"
+        formControlName="date"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="stacked">Notes</ion-label>
+      <ion-textarea autoGrow="true" formControlName="notes"></ion-textarea>
+    </ion-item>
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="applicationForm.invalid"
+      >Submit</ion-button
+    >
+  </form>
+</ion-content>
