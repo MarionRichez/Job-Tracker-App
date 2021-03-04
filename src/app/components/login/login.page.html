@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="signInForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        type="email"
+        formControlName="email"
+        placeholder="Enter an email"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input
+        type="password"
+        formControlName="password"
+        placeholder="Enter a password"
+      ></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="signInForm.invalid"
+      >Login</ion-button
+    >
+    <ion-button expand="block" color="light" [routerLink]="['/register']">
+      Register
+    </ion-button>
+  </form>
+</ion-content>

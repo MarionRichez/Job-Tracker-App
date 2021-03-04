@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{application.company}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="['/home']"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="addEvent()">
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item lines="none">
+    <ion-label color="tertiary">Status</ion-label>
+    <p>{{application.status}}</p>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label color="tertiary">Company</ion-label>
+    <p>{{application.company}}</p>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label color="tertiary">Position</ion-label>
+    <p>{{application.position}}</p>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label color="tertiary">Url</ion-label>
+    <a href="{{application.url}}">Link</a>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label color="tertiary">Date</ion-label>
+    <p>{{application.date | date: 'MMM d, y'}}</p>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="stacked" color="tertiary">Notes</ion-label>
+    <ion-textarea
+      autoGrow="true"
+      readonly
+      value="{{application.notes}}"
+    ></ion-textarea>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" class="ion-text-center">
+        <ion-button
+          color="primary"
+          expand="block"
+          [routerLink]="['/add-interview/', id]"
+        >
+          Add
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-button
+          expand="block"
+          color="light"
+          (click)="toggle()"
+          [disabled]="interviews == false"
+        >
+          {{btn_name}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf="show_list">
+    <ion-item-sliding *ngFor="let interview of interviews">
+      <ion-item
+        lines="full"
+        [routerLink]="['/interview/', interview.payload.doc.id, id]"
+      >
+        <ion-label>
+          <h2>{{ interview.payload.doc.data().platform }} Interview</h2>
+          <p>{{ interview.payload.doc.data().date | date: 'MMM d, y' }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="start">
+        <ion-item-option
+          [routerLink]="['/edit-interview/', interview.payload.doc.id, id]"
+        >
+          <ion-icon slot="icon-only" name="pencil"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end">
+        <ion-item-option
+          color="danger"
+          (click)="deleteInterview(interview.payload.doc.id)"
+        >
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

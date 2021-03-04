@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{interview.platform}} Interview</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [routerLink]="['/application/', applicationId]"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="addEvent()">
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item lines="none">
+    <ion-label color="tertiary">Recruiter</ion-label>
+    <p>{{interview.recruiter}}</p>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label color="tertiary">Platform</ion-label>
+    <p>{{interview.platform}}</p>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label color="tertiary">Date</ion-label>
+    <p>{{interview.date | date: 'MMM d, y'}}</p>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label position="stacked" color="tertiary">Notes</ion-label>
+    <ion-textarea
+      autoGrow="true"
+      readonly
+      value="{{interview.notes}}"
+    ></ion-textarea>
+  </ion-item>
+</ion-content>
