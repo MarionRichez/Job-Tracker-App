@@ -45,13 +45,17 @@ export class HomePage {
   }
 
   getByStatus(selectValue: any) {
-    this.applicationService
+    if (selectValue == "all") {
+      this.getApplications();
+    } else {
+      this.applicationService
       .getApplicationByStatus(selectValue)
       .subscribe(
         (data) => {
           this.applications = data;
         }
       )
+    }
     this.visibility = true;
   }
 }
