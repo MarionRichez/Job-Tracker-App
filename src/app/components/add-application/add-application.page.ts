@@ -25,12 +25,12 @@ export class AddApplicationPage implements OnInit {
 
   initForm() {
     this.applicationForm = this.formBuilder.group({
-      status: ['Pending', Validators.required],
-      company: ['Odoo', Validators.required],
-      position: ['Developper Mobile', Validators.required],
-      url: ['odoo.com', Validators.required],
-      date: ['2021-01-12T15:43:06.450+01:00', Validators.required],
-      notes: ['Good salary']
+      status: ['', Validators.required],
+      company: ['', Validators.required],
+      position: ['', Validators.required],
+      url: ['', Validators.required],
+      date: ['', Validators.required],
+      notes: ['']
     })
   }
 

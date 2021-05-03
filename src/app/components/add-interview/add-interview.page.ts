@@ -29,10 +29,10 @@ export class AddInterviewPage implements OnInit {
   initForm() {
     this.id = this.actRoute.snapshot.paramMap.get("id");
     this.interviewForm = this.formBuilder.group({
-      recruiter: ['John Doe', Validators.required],
-      platform: ['Phone', Validators.required],
-      date: ['2021-01-23T15:43:06.450+01:00', Validators.required],
-      notes: ['Get CV']
+      recruiter: ['', Validators.required],
+      platform: ['', Validators.required],
+      date: ['', Validators.required],
+      notes: ['']
     })
   }
 
