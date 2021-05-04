@@ -747,12 +747,14 @@
           key: "getApplicationById",
           value: function getApplicationById(id) {
             return this.getPath().doc(id).valueChanges();
-          } // getApplicationByStatus(status: any) {
-          //   return this.firestore
-          //     .collection(this.application, ref => ref.where('status', '==', status))
-          //     .valueChanges()
-          // }
-
+          }
+        }, {
+          key: "getApplicationByStatus",
+          value: function getApplicationByStatus(status) {
+            return this.firestore.collection(this.users).doc(this.uid).collection(this.application, function (ref) {
+              return ref.where('status', '==', status);
+            }).snapshotChanges();
+          }
         }, {
           key: "addApplication",
           value: function addApplication(data) {
@@ -992,7 +994,7 @@
             var calOptions = this.getOptions();
             calOptions.firstReminderMinutes = 120;
             calOptions.secondReminderMinutes = 60;
-            this.calendar.createEventWithOptions(title, location, notes, startDate, endDate, calOptions).then(function (msg) {
+            this.calendar.createEventInteractivelyWithOptions(title, location, notes, startDate, endDate, calOptions).then(function (msg) {
               console.log(msg);
             }, function (err) {
               console.error(err);

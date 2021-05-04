@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>New Application</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-back-button [routerLink]=\"['/home']\"></ion-back-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <form [formGroup]=\"applicationForm\" (ngSubmit)=\"addApplication()\">\n    <ion-list>\n      <ion-item lines=\"full\">\n        <ion-label>Status</ion-label>\n        <ion-select okText=\"Ok\" cancelText=\"Cancel\" formControlName=\"status\">\n          <ion-select-option value=\"Whishlist\">Whishlist</ion-select-option>\n          <ion-select-option value=\"Pending\">Pending</ion-select-option>\n          <ion-select-option value=\"Offer\">Offer</ion-select-option>\n          <ion-select-option value=\"Denied\">Denied</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n    <ion-item lines=\"full\">\n      <ion-label>Company</ion-label>\n      <ion-input\n        class=\"ion-text-right\"\n        type=\"text\"\n        formControlName=\"company\"\n      ></ion-input>\n    </ion-item>\n    <ion-item lines=\"full\">\n      <ion-label>Position</ion-label>\n      <ion-input\n        class=\"ion-text-right\"\n        type=\"text\"\n        formControlName=\"position\"\n      ></ion-input>\n    </ion-item>\n    <ion-item lines=\"full\">\n      <ion-label>Url</ion-label>\n      <ion-input\n        type=\"url\"\n        class=\"ion-text-right\"\n        formControlName=\"url\"\n      ></ion-input>\n    </ion-item>\n    <ion-item lines=\"full\">\n      <ion-label>Date</ion-label>\n      <ion-datetime\n        class=\"ion-text-right\"\n        displayFormat=\"DD/MM/YYYY\"\n        formControlName=\"date\"\n      ></ion-datetime>\n    </ion-item>\n    <ion-item lines=\"full\">\n      <ion-label position=\"stacked\">Notes</ion-label>\n      <ion-textarea autoGrow=\"true\" formControlName=\"notes\"></ion-textarea>\n    </ion-item>\n    <ion-button\n      expand=\"block\"\n      type=\"submit\"\n      [disabled]=\"applicationForm.invalid\"\n      >Submit</ion-button\n    >\n  </form>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>New Application</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button [routerLink]=\"['/home']\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <form [formGroup]=\"applicationForm\" (ngSubmit)=\"addApplication()\">\r\n    <ion-list>\r\n      <ion-item lines=\"full\">\r\n        <ion-label>Status</ion-label>\r\n        <ion-select okText=\"Ok\" cancelText=\"Cancel\" formControlName=\"status\">\r\n          <ion-select-option value=\"Whishlist\">Whishlist</ion-select-option>\r\n          <ion-select-option value=\"Pending\">Pending</ion-select-option>\r\n          <ion-select-option value=\"Offer\">Offer</ion-select-option>\r\n          <ion-select-option value=\"Denied\">Denied</ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-item lines=\"full\">\r\n      <ion-label>Company</ion-label>\r\n      <ion-input\r\n        class=\"ion-text-right\"\r\n        type=\"text\"\r\n        formControlName=\"company\"\r\n      ></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label>Position</ion-label>\r\n      <ion-input\r\n        class=\"ion-text-right\"\r\n        type=\"text\"\r\n        formControlName=\"position\"\r\n      ></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label>Url</ion-label>\r\n      <ion-input\r\n        type=\"url\"\r\n        class=\"ion-text-right\"\r\n        formControlName=\"url\"\r\n      ></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label>Date</ion-label>\r\n      <ion-datetime\r\n        class=\"ion-text-right\"\r\n        displayFormat=\"DD/MM/YYYY\"\r\n        formControlName=\"date\"\r\n      ></ion-datetime>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"stacked\">Notes</ion-label>\r\n      <ion-textarea autoGrow=\"true\" formControlName=\"notes\"></ion-textarea>\r\n    </ion-item>\r\n    <ion-button\r\n      expand=\"block\"\r\n      type=\"submit\"\r\n      [disabled]=\"applicationForm.invalid\"\r\n      >Submit</ion-button\r\n    >\r\n  </form>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -121,50 +121,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var src_app_service_application_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/application-service.service */ "./src/app/service/application-service.service.ts");
-/* harmony import */ var src_app_service_calendar_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/calendar-service.service */ "./src/app/service/calendar-service.service.ts");
-
 
 
 
 
 
 let AddApplicationPage = class AddApplicationPage {
-    constructor(formBuilder, applicationService, route, calendar) {
+    constructor(formBuilder, applicationService, route) {
         this.formBuilder = formBuilder;
         this.applicationService = applicationService;
         this.route = route;
-        this.calendar = calendar;
     }
     ngOnInit() {
         this.initForm();
-        this.calendar.createCalendar("Candidature");
     }
     initForm() {
         this.applicationForm = this.formBuilder.group({
-            status: ['Pending', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            company: ['Odoo', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            position: ['Developper Mobile', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            url: ['odoo.com', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            date: ['2021-01-12T15:43:06.450+01:00', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            notes: ['Good salary']
+            status: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            company: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            position: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            url: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            date: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            notes: ['']
         });
     }
     addApplication() {
         if (!this.applicationForm.invalid) {
             this.applicationService.addApplication(this.applicationForm.value);
-            this.createEvent();
             this.route.navigate(["home"]);
         }
-    }
-    createEvent() {
-        this.calendar.createEvent(this.applicationForm.value.position, this.applicationForm.value.company, this.applicationForm.value.notes, this.applicationForm.value.date, this.applicationForm.value.date);
     }
 };
 AddApplicationPage.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
     { type: src_app_service_application_service_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: src_app_service_calendar_service_service__WEBPACK_IMPORTED_MODULE_5__["CalendarService"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 AddApplicationPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

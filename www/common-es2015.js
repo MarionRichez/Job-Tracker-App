@@ -485,11 +485,13 @@ let ApplicationService = class ApplicationService {
             .doc(id)
             .valueChanges();
     }
-    // getApplicationByStatus(status: any) {
-    //   return this.firestore
-    //     .collection(this.application, ref => ref.where('status', '==', status))
-    //     .valueChanges()
-    // }
+    getApplicationByStatus(status) {
+        return this.firestore
+            .collection(this.users)
+            .doc(this.uid)
+            .collection(this.application, ref => ref.where('status', '==', status))
+            .snapshotChanges();
+    }
     addApplication(data) {
         this.getPath()
             .add(data)
@@ -635,7 +637,7 @@ let CalendarService = class CalendarService {
         calOptions.firstReminderMinutes = 120;
         calOptions.secondReminderMinutes = 60;
         this.calendar
-            .createEventWithOptions(title, location, notes, startDate, endDate, calOptions)
+            .createEventInteractivelyWithOptions(title, location, notes, startDate, endDate, calOptions)
             .then((msg) => { console.log(msg); }, (err) => { console.error(err); });
     }
 };

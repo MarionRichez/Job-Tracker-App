@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Login</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <form [formGroup]=\"signInForm\" (ngSubmit)=\"submit()\">\n    <ion-item>\n      <ion-label position=\"floating\">Email</ion-label>\n      <ion-input\n        type=\"email\"\n        formControlName=\"email\"\n        placeholder=\"Enter an email\"\n      ></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position=\"floating\">Password</ion-label>\n      <ion-input\n        type=\"password\"\n        formControlName=\"password\"\n        placeholder=\"Enter a password\"\n      ></ion-input>\n    </ion-item>\n    <ion-button expand=\"block\" type=\"submit\" [disabled]=\"signInForm.invalid\"\n      >Login</ion-button\n    >\n    <ion-button expand=\"block\" color=\"light\" [routerLink]=\"['/register']\">\n      Register\n    </ion-button>\n  </form>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Login</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <form [formGroup]=\"signInForm\" (ngSubmit)=\"submit()\">\r\n    <ion-item>\r\n      <ion-label position=\"floating\">Email</ion-label>\r\n      <ion-input\r\n        type=\"email\"\r\n        formControlName=\"email\"\r\n        placeholder=\"Enter an email\"\r\n      ></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-label position=\"floating\">Password</ion-label>\r\n      <ion-input\r\n        type=\"password\"\r\n        formControlName=\"password\"\r\n        placeholder=\"Enter a password\"\r\n      ></ion-input>\r\n    </ion-item>\r\n    <ion-button expand=\"block\" type=\"submit\" [disabled]=\"signInForm.invalid\"\r\n      >Login</ion-button\r\n    >\r\n    <ion-button expand=\"block\" color=\"light\" [routerLink]=\"['/register']\">\r\n      Register\r\n    </ion-button>\r\n  </form>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -134,8 +134,17 @@ let LoginPage = class LoginPage {
     }
     initForm() {
         this.signInForm = this.formBuilder.group({
-            email: ['test@gmail.com', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            password: ['123test', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern['^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$']
+                ])
+            ],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(12),
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(8)
+                ])
+            ]
         });
     }
     submit() {

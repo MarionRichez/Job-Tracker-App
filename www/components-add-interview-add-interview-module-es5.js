@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>New Interview</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-back-button [routerLink]=\"['/home']\"></ion-back-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <form [formGroup]=\"interviewForm\" (ngSubmit)=\"submit()\">\n    <ion-item lines=\"full\">\n      <ion-label>Recruiter</ion-label>\n      <ion-input\n        class=\"ion-text-right\"\n        type=\"text\"\n        formControlName=\"recruiter\"\n        required\n      ></ion-input>\n    </ion-item>\n    <ion-list>\n      <ion-item lines=\"full\">\n        <ion-label>Platform</ion-label>\n        <ion-select okText=\"Ok\" cancelText=\"Cancel\" formControlName=\"platform\">\n          <ion-select-option value=\"Phone\">Phone</ion-select-option>\n          <ion-select-option value=\"Vidéo\">Vidéo</ion-select-option>\n          <ion-select-option value=\"Face-to-face\">\n            Face-to-face\n          </ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n    <ion-item lines=\"full\">\n      <ion-label>Date</ion-label>\n      <ion-datetime\n        class=\"ion-text-right\"\n        displayFormat=\"DD/MM/YYYY\"\n        formControlName=\"date\"\n      ></ion-datetime>\n    </ion-item>\n    <ion-item lines=\"full\">\n      <ion-label position=\"stacked\">Notes</ion-label>\n      <ion-textarea autoGrow=\"true\" formControlName=\"notes\"></ion-textarea>\n    </ion-item>\n    <ion-button expand=\"block\" type=\"submit\" [disabled]=\"interviewForm.invalid\"\n      >Submit</ion-button\n    >\n  </form>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>New Interview</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button [routerLink]=\"['/home']\"></ion-back-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <form [formGroup]=\"interviewForm\" (ngSubmit)=\"submit()\">\r\n    <ion-item lines=\"full\">\r\n      <ion-label>Recruiter</ion-label>\r\n      <ion-input\r\n        class=\"ion-text-right\"\r\n        type=\"text\"\r\n        formControlName=\"recruiter\"\r\n        required\r\n      ></ion-input>\r\n    </ion-item>\r\n    <ion-list>\r\n      <ion-item lines=\"full\">\r\n        <ion-label>Platform</ion-label>\r\n        <ion-select okText=\"Ok\" cancelText=\"Cancel\" formControlName=\"platform\">\r\n          <ion-select-option value=\"Phone\">Phone</ion-select-option>\r\n          <ion-select-option value=\"Vidéo\">Vidéo</ion-select-option>\r\n          <ion-select-option value=\"Face-to-face\">\r\n            Face-to-face\r\n          </ion-select-option>\r\n        </ion-select>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-item lines=\"full\">\r\n      <ion-label>Date</ion-label>\r\n      <ion-datetime\r\n        class=\"ion-text-right\"\r\n        displayFormat=\"DD/MM/YYYY\"\r\n        formControlName=\"date\"\r\n      ></ion-datetime>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"stacked\">Notes</ion-label>\r\n      <ion-textarea autoGrow=\"true\" formControlName=\"notes\"></ion-textarea>\r\n    </ion-item>\r\n    <ion-button expand=\"block\" type=\"submit\" [disabled]=\"interviewForm.invalid\"\r\n      >Submit</ion-button\r\n    >\r\n  </form>\r\n</ion-content>\r\n";
       /***/
     },
 
@@ -256,10 +256,10 @@
           value: function initForm() {
             this.id = this.actRoute.snapshot.paramMap.get("id");
             this.interviewForm = this.formBuilder.group({
-              recruiter: ['John Doe', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-              platform: ['Phone', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-              date: ['2021-01-23T15:43:06.450+01:00', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-              notes: ['Get CV']
+              recruiter: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+              platform: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+              date: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+              notes: ['']
             });
           }
         }, {

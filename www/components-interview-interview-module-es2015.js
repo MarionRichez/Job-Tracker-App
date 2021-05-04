@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>{{interview.platform}} Interview</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-back-button\n        [routerLink]=\"['/application/', applicationId]\"\n      ></ion-back-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Recruiter</ion-label>\n    <p>{{interview.recruiter}}</p>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Platform</ion-label>\n    <p>{{interview.platform}}</p>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Date</ion-label>\n    <p>{{interview.date | date: 'MMM d, y'}}</p>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label position=\"stacked\" color=\"tertiary\">Notes</ion-label>\n    <ion-textarea\n      autoGrow=\"true\"\n      readonly\n      value=\"{{interview.notes}}\"\n    ></ion-textarea>\n  </ion-item>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>{{interview.platform}} Interview</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button\r\n        [routerLink]=\"['/application/', applicationId]\"\r\n      ></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"addEvent()\">\r\n        <ion-icon name=\"calendar-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Recruiter</ion-label>\r\n    <p>{{interview.recruiter}}</p>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Platform</ion-label>\r\n    <p>{{interview.platform}}</p>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Date</ion-label>\r\n    <p>{{interview.date | date: 'MMM d, y'}}</p>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label position=\"stacked\" color=\"tertiary\">Notes</ion-label>\r\n    <ion-textarea\r\n      autoGrow=\"true\"\r\n      readonly\r\n      value=\"{{interview.notes}}\"\r\n    ></ion-textarea>\r\n  </ion-item>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -118,15 +118,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/interview-service.service */ "./src/app/service/interview-service.service.ts");
+/* harmony import */ var src_app_service_calendar_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/service/calendar-service.service */ "./src/app/service/calendar-service.service.ts");
+/* harmony import */ var src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/interview-service.service */ "./src/app/service/interview-service.service.ts");
+
 
 
 
 
 let InterviewPage = class InterviewPage {
-    constructor(actRoute, interviewService) {
+    constructor(actRoute, interviewService, calendar) {
         this.actRoute = actRoute;
         this.interviewService = interviewService;
+        this.calendar = calendar;
         this.interview = {};
         this.interviewId = this.actRoute.snapshot.paramMap.get("id1");
         this.applicationId = this.actRoute.snapshot.paramMap.get("id2");
@@ -144,10 +147,15 @@ let InterviewPage = class InterviewPage {
             this.interview.notes = data["notes"];
         });
     }
+    addEvent() {
+        this.calendar.createCalendar("Entretien");
+        this.calendar.createEvent(`${this.interview.recruiter} interview`, "", this.interview.notes, new Date(this.interview.date), new Date(this.interview.date));
+    }
 };
 InterviewPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
-    { type: src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_3__["InterviewService"] }
+    { type: src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_4__["InterviewService"] },
+    { type: src_app_service_calendar_service_service__WEBPACK_IMPORTED_MODULE_3__["CalendarService"] }
 ];
 InterviewPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

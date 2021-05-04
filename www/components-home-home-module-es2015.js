@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>Home</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"logout()\">\n        <ion-icon name=\"log-out-outline\"> </ion-icon\n      ></ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <!-- <ion-item lines=\"full\">\n    <ion-label>Status</ion-label>\n    <ion-select okText=\"Ok\" cancelText=\"Cancel\" [(ngModel)]=\"status\">\n      <ion-select-option value=\"Whishlist\">Whishlist</ion-select-option>\n      <ion-select-option value=\"Pending\">Pending</ion-select-option>\n      <ion-select-option value=\"Offer\">Offer</ion-select-option>\n      <ion-select-option value=\"Denied\">Denied</ion-select-option>\n    </ion-select>\n  </ion-item> -->\n\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\n    <ion-fab-button [routerLink]=\"['/add-application']\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n  <ion-list lines=\"full\">\n    <ion-item-sliding *ngFor=\"let application of applications\">\n      <ion-item [routerLink]=\"['/application/', application.payload.doc.id]\">\n        <ion-label>\n          <h2>{{ application.payload.doc.data().position }}</h2>\n          <p>{{ application.payload.doc.data().company }}</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item-options side=\"start\">\n        <ion-item-option\n          [routerLink]=\"['/edit-application/', application.payload.doc.id]\"\n        >\n          <ion-icon slot=\"icon-only\" name=\"pencil\"></ion-icon>\n        </ion-item-option>\n      </ion-item-options>\n\n      <ion-item-options side=\"end\">\n        <ion-item-option\n          color=\"danger\"\n          (click)=\"deleteApplication(application.payload.doc.id)\"\n        >\n          <ion-icon slot=\"icon-only\" name=\"trash\"></ion-icon>\n        </ion-item-option>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>Home</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"logout()\">\r\n        <ion-icon name=\"log-out-outline\"> </ion-icon\r\n      ></ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-item lines=\"full\">\r\n    <ion-label>Status</ion-label>\r\n    <ion-select\r\n      okText=\"Ok\"\r\n      cancelText=\"Cancel\"\r\n      [(ngModel)]=\"status\"\r\n      (ionChange)=\"getByStatus(status)\"\r\n    >\r\n      <ion-select-option value=\"all\">All</ion-select-option>\r\n      <ion-select-option value=\"Whishlist\">Whishlist</ion-select-option>\r\n      <ion-select-option value=\"Pending\">Pending</ion-select-option>\r\n      <ion-select-option value=\"Offer\">Offer</ion-select-option>\r\n      <ion-select-option value=\"Denied\">Denied</ion-select-option>\r\n    </ion-select>\r\n  </ion-item>\r\n\r\n  <ion-fab vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button [routerLink]=\"['/add-application']\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n\r\n  <div *ngIf=\"visibility\">\r\n    <ion-list lines=\"full\">\r\n      <ion-item-sliding *ngFor=\"let application of applications\">\r\n        <ion-item [routerLink]=\"['/application/', application.payload.doc.id]\">\r\n          <ion-label>\r\n            <h2>{{ application.payload.doc.data().position }}</h2>\r\n            <h3>{{ application.payload.doc.data().company }}</h3>\r\n            <p>{{ application.payload.doc.data().status }}</p>\r\n          </ion-label>\r\n        </ion-item>\r\n\r\n        <ion-item-options side=\"start\">\r\n          <ion-item-option\r\n            [routerLink]=\"['/edit-application/', application.payload.doc.id]\"\r\n          >\r\n            <ion-icon slot=\"icon-only\" name=\"pencil\"></ion-icon>\r\n          </ion-item-option>\r\n        </ion-item-options>\r\n\r\n        <ion-item-options side=\"end\">\r\n          <ion-item-option\r\n            color=\"danger\"\r\n            (click)=\"deleteApplication(application.payload.doc.id)\"\r\n          >\r\n            <ion-icon slot=\"icon-only\" name=\"trash\"></ion-icon>\r\n          </ion-item-option>\r\n        </ion-item-options>\r\n      </ion-item-sliding>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -124,7 +124,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePage = class HomePage {
-    // status: string;
     constructor(applicationService, authService) {
         this.applicationService = applicationService;
         this.authService = authService;
@@ -140,12 +139,26 @@ let HomePage = class HomePage {
             .subscribe((data) => {
             this.applications = data;
         });
+        this.visibility = true;
     }
     deleteApplication(id) {
         this.applicationService.deleteApplication(id);
     }
     logout() {
         this.authService.logout();
+    }
+    getByStatus(selectValue) {
+        if (selectValue == "all") {
+            this.getApplications();
+        }
+        else {
+            this.applicationService
+                .getApplicationByStatus(selectValue)
+                .subscribe((data) => {
+                this.applications = data;
+            });
+        }
+        this.visibility = true;
     }
 };
 HomePage.ctorParameters = () => [

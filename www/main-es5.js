@@ -133,7 +133,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n";
+      __webpack_exports__["default"] = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n";
       /***/
     },
 
@@ -650,7 +650,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! C:\Users\riche\OneDrive\Bureau\job-tracker\src\main.ts */
+      /*! C:\Users\riche\Documents\GitHub\job-tracker-app\src\main.ts */
       "./src/main.ts");
       /***/
     }

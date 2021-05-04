@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>{{application.company}}</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-back-button [routerLink]=\"['/home']\"></ion-back-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Status</ion-label>\n    <p>{{application.status}}</p>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Company</ion-label>\n    <p>{{application.company}}</p>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Position</ion-label>\n    <p>{{application.position}}</p>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Url</ion-label>\n    <a href=\"{{application.url}}\">Link</a>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label color=\"tertiary\">Date</ion-label>\n    <p>{{application.date | date: 'MMM d, y'}}</p>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-label position=\"stacked\" color=\"tertiary\">Notes</ion-label>\n    <ion-textarea\n      autoGrow=\"true\"\n      readonly\n      value=\"{{application.notes}}\"\n    ></ion-textarea>\n  </ion-item>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"6\" class=\"ion-text-center\">\n        <ion-button\n          color=\"primary\"\n          expand=\"block\"\n          [routerLink]=\"['/add-interview/', id]\"\n        >\n          Add\n        </ion-button>\n      </ion-col>\n      <ion-col size=\"6\" class=\"ion-text-center\">\n        <ion-button\n          expand=\"block\"\n          color=\"light\"\n          (click)=\"toggle()\"\n          [disabled]=\"interviews == false\"\n        >\n          {{btn_name}}\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <ion-list *ngIf=\"show_list\">\n    <ion-item-sliding *ngFor=\"let interview of interviews\">\n      <ion-item\n        lines=\"full\"\n        [routerLink]=\"['/interview/', interview.payload.doc.id, id]\"\n      >\n        <ion-label>\n          <h2>{{ interview.payload.doc.data().platform }} Interview</h2>\n          <p>{{ interview.payload.doc.data().date | date: 'MMM d, y' }}</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item-options side=\"start\">\n        <ion-item-option\n          [routerLink]=\"['/edit-interview/', interview.payload.doc.id, id]\"\n        >\n          <ion-icon slot=\"icon-only\" name=\"pencil\"></ion-icon>\n        </ion-item-option>\n      </ion-item-options>\n\n      <ion-item-options side=\"end\">\n        <ion-item-option\n          color=\"danger\"\n          (click)=\"deleteInterview(interview.payload.doc.id)\"\n        >\n          <ion-icon slot=\"icon-only\" name=\"trash\"></ion-icon>\n        </ion-item-option>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>{{application.company}}</ion-title>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button [routerLink]=\"['/home']\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"addEvent()\">\r\n        <ion-icon name=\"calendar-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Status</ion-label>\r\n    <p>{{application.status}}</p>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Company</ion-label>\r\n    <p>{{application.company}}</p>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Position</ion-label>\r\n    <p>{{application.position}}</p>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Url</ion-label>\r\n    <a href=\"{{application.url}}\">Link</a>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label color=\"tertiary\">Date</ion-label>\r\n    <p>{{application.date | date: 'MMM d, y'}}</p>\r\n  </ion-item>\r\n  <ion-item lines=\"none\">\r\n    <ion-label position=\"stacked\" color=\"tertiary\">Notes</ion-label>\r\n    <ion-textarea\r\n      autoGrow=\"true\"\r\n      readonly\r\n      value=\"{{application.notes}}\"\r\n    ></ion-textarea>\r\n  </ion-item>\r\n\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col size=\"6\" class=\"ion-text-center\">\r\n        <ion-button\r\n          color=\"primary\"\r\n          expand=\"block\"\r\n          [routerLink]=\"['/add-interview/', id]\"\r\n        >\r\n          Add\r\n        </ion-button>\r\n      </ion-col>\r\n      <ion-col size=\"6\" class=\"ion-text-center\">\r\n        <ion-button\r\n          expand=\"block\"\r\n          color=\"light\"\r\n          (click)=\"toggle()\"\r\n          [disabled]=\"interviews == false\"\r\n        >\r\n          {{btn_name}}\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n\r\n  <ion-list *ngIf=\"show_list\">\r\n    <ion-item-sliding *ngFor=\"let interview of interviews\">\r\n      <ion-item\r\n        lines=\"full\"\r\n        [routerLink]=\"['/interview/', interview.payload.doc.id, id]\"\r\n      >\r\n        <ion-label>\r\n          <h2>{{ interview.payload.doc.data().platform }} Interview</h2>\r\n          <p>{{ interview.payload.doc.data().date | date: 'MMM d, y' }}</p>\r\n        </ion-label>\r\n      </ion-item>\r\n\r\n      <ion-item-options side=\"start\">\r\n        <ion-item-option\r\n          [routerLink]=\"['/edit-interview/', interview.payload.doc.id, id]\"\r\n        >\r\n          <ion-icon slot=\"icon-only\" name=\"pencil\"></ion-icon>\r\n        </ion-item-option>\r\n      </ion-item-options>\r\n\r\n      <ion-item-options side=\"end\">\r\n        <ion-item-option\r\n          color=\"danger\"\r\n          (click)=\"deleteInterview(interview.payload.doc.id)\"\r\n        >\r\n          <ion-icon slot=\"icon-only\" name=\"trash\"></ion-icon>\r\n        </ion-item-option>\r\n      </ion-item-options>\r\n    </ion-item-sliding>\r\n  </ion-list>\r\n</ion-content>\r\n";
       /***/
     },
 
@@ -225,17 +225,24 @@
       /* harmony import */
 
 
-      var src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var src_app_service_calendar_service_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! src/app/service/calendar-service.service */
+      "./src/app/service/calendar-service.service.ts");
+      /* harmony import */
+
+
+      var src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! src/app/service/interview-service.service */
       "./src/app/service/interview-service.service.ts");
 
       var ApplicationPage = /*#__PURE__*/function () {
-        function ApplicationPage(actRoute, applicationService, interviewService) {
+        function ApplicationPage(actRoute, applicationService, interviewService, calendar) {
           _classCallCheck(this, ApplicationPage);
 
           this.actRoute = actRoute;
           this.applicationService = applicationService;
           this.interviewService = interviewService;
+          this.calendar = calendar;
           this.application = {};
           this.show_list = false;
           this.btn_name = "Show";
@@ -286,6 +293,12 @@
               this.btn_name = "Show";
             }
           }
+        }, {
+          key: "addEvent",
+          value: function addEvent() {
+            this.calendar.createCalendar("Candidature");
+            this.calendar.createEvent(this.application.position, this.application.company, this.application.notes, new Date(this.application.date), new Date(this.application.date));
+          }
         }]);
 
         return ApplicationPage;
@@ -297,7 +310,9 @@
         }, {
           type: src_app_service_application_service_service__WEBPACK_IMPORTED_MODULE_3__["ApplicationService"]
         }, {
-          type: src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_4__["InterviewService"]
+          type: src_app_service_interview_service_service__WEBPACK_IMPORTED_MODULE_5__["InterviewService"]
+        }, {
+          type: src_app_service_calendar_service_service__WEBPACK_IMPORTED_MODULE_4__["CalendarService"]
         }];
       };
 
