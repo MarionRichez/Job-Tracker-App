@@ -1,4 +1,4 @@
-![Job Tracker App - Home](https://github.com/MarionRichez/job-tracker-app/blob/main/src/assets/images/Job%20Tracker%20App%20-%20Home.PNG)
+![Job Tracker App - Home](https://raw.githubusercontent.com/MarionRichez/job-tracker-app/main/Job%20Tracker%20Application.png)
 # Job Tracker App
 
 Keep track of all your job applications and interviews in one place with this app. You can add all the dates of applications and interviews to your personal calendar and keep track of all important dates without returning to the app.
